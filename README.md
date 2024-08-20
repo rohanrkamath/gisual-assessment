@@ -1,6 +1,6 @@
 # Gisual Coding Challenge
 
-First of all, thank you for this opportunity. This challege was a great learning experience for me, and possibly one of the more interesting ones I have involved myself with recently.
+First of all, thank you for this opportunity. This challenge was a great learning experience for me, and possibly one of the more interesting ones I have involved myself with recently.
 
 ## To Note - 
 1. Although I have written the dockerfile and k8 config files, I was not able to get it working, as I was having issues with the installation of GDAL package on the docker image. This is what I was trying to get working for about a day.
@@ -14,7 +14,7 @@ First of all, thank you for this opportunity. This challege was a great learning
 1. `find_nearest_station_with_directions` in `nearest_station_with_dir` file is the function that returns the geojson of the nearest station, with walking directions.
 2. The API `/nearest-station` in `main.py` is the api that exposes the above function.
 3. I have used Redis to keep track of locations, and if the user attempts to send a request with the same location, they are notified that the location was already processed.
-4. To the API cost effective, again the use of a Redis cache helps, and immediately mentions to the user the location was processed, without processing it again. 
+4. To the API cost effective, again the use of a Redis cache helps, and immediately mentions to the user the location was processed, without processing it again. Also integrated async calls.
 5. The API return looks like this - ![return example](api_return.png)
 6. To make accessable to millions of users, I made sure to make functions asynchronous, and wrote kubernetes config to make it horizontally scalable.
 7. I created an api key to restrict random access, rate_limt to prevent DOS attacks and CORS middleware to make it more secure. 
