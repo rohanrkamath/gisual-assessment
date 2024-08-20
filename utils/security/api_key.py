@@ -9,7 +9,6 @@ import os
 
 API_KEY_NAME = "X-API-KEY"
 # Define the expected API key (in a real application, store this securely)
-
 API_KEY = os.getenv("API_KEY")
 # API_KEY = os.getenv("API_KEY") # kubernetes config
 

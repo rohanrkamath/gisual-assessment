@@ -78,4 +78,3 @@ async def nearest_station(lat: float, lon: float, request: Request, api_key: API
 # should be removed before deployement, kept it for now.
 if __name__ == '__main__':
     uvicorn.run(app, host='0.0.0.0', port=5001)
-

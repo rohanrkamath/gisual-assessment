@@ -32,7 +32,7 @@ async def get_walking_directions(origin, destination):
     
     logging.info(f"Fetching walking directions from {origin} to {destination}")
 
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=30)) as session:
         async with session.get(url) as response:
             if response.status == 200:
                 raw_response = await response.text()
