@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-api
+  template:
+    metadata:
+      labels:
+        app: my-api
+    spec:
+      containers:
+      - name: gisual-challenge
+        image: rohan22am/gisual_challenge:v1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: LOG_LEVEL
+        - name: RATE_LIMIT
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: RATE_LIMIT
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secret
+              key: API_KEY
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
